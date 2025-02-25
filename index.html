@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styel.css">
+  <title>Flower Bank app</title>
+</head>
+<body>
+  <div>
+    <h1>Flower Bank</h1>
+    <p>Manage Your Balance</p>
+
+    <div>
+      <h2 id="blance">Tk 0.00</h2>
+      <p>Current Balance</p>
+    </div>
+
+    <!-- input section -->
+     <div>
+      <form action="">
+        <input type="text" id="amountInput" placeholder="Enter amount">
+
+        <div>
+          <button id="addMoney">Add Money</button>
+          <button id="withdraw">Withdraw</button>
+        </div>
+      </form>
+
+      <!--  transaction history button -->
+        <button id="transHistroy">Transaction history</button>
+     </div>
+
+     <div id="transList">
+      <!-- histroy will add here by js -->
+     </div>
+
+      <button id="clearHistory">
+        Clear History
+      </button>
+  </div>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
