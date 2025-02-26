@@ -28,8 +28,14 @@ addMoney.addEventListener('click',()=>{
         currentBlance += amount;
         balance.textContent = `Tk: ${currentBlance.toFixed(2)}`;
 
+        const transaction = {                // create class for transaction history
+            action: 'add Money',
+            amount: amount,
+            balance: currentBlance,
+            timestamp: new Date().toLocaleString()      // this get date form localhost
+        }
 
-        
+    transactionHistory.push(transaction);
     localStorage.setItem('blance', currentBlance);
     localStorage.setItem('transactionHistory', JSON.stringify(transactionHistory));
     }
@@ -49,12 +55,24 @@ withdraw.addEventListener('click',()=>{
     }else if(amount > currentBlance){
         alert('Insufficient balance');
     }else{
-        currentBlance -+ amount;
+        currentBlance -= amount;
         balance.textContent = `Tk ${currentBlance.toFixed(2)}`;
 
+        const transaction ={                  // create class for transaction history
+            action: 'withdraw',
+            amount: amount,
+            balance: currentBlance,
+            timestamp: new Date().toLocaleString()   // this get date form localhost
+        };
 
+        transactionHistory.push(transaction);
         localStorage.setItem('blance', currentBlance);
         localStorage.setItem('transactionHistory', JSON.stringify(transactionHistory));
     }
     amountInput.value = '';
 });
+
+
+
+//  add Transaction History funcation
+
