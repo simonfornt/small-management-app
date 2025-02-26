@@ -36,3 +36,25 @@ addMoney.addEventListener('click',()=>{
     amountInput.value = '';
 
 });
+
+
+
+//  add withdraw function
+
+withdraw.addEventListener('click',()=>{
+    const amount = parseFloat(amountInput.value);
+
+    if(isNaN(amount) || amount <= 0){
+        alert('Please enter a vail amount');
+    }else if(amount > currentBlance){
+        alert('Insufficient balance');
+    }else{
+        currentBlance -+ amount;
+        balance.textContent = `Tk ${currentBlance.toFixed(2)}`;
+
+
+        localStorage.setItem('blance', currentBlance);
+        localStorage.setItem('transactionHistory', JSON.stringify(transactionHistory));
+    }
+    amountInput.value = '';
+});
