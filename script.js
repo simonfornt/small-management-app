@@ -104,3 +104,17 @@ transHistory.addEventListener('click',()=>{
     }
 });
 
+
+//  add clear history funcation
+
+
+const clearHistoryButton = document.querySelector('#clearHistory');
+
+clearHistoryButton.addEventListener('click',()=>{
+    localStorage.removeItem('transactionHistory');
+    transList.innerHTML = `<p class="text-center text-gray-500 italic">No transaction yet.</p>`;
+
+    localStorage.setItem('blance', 0);
+    currentBlance = 0;
+    balance.textContent = `Tk: ${currentBlance.toFixed(2)}`;
+});
