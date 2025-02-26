@@ -75,4 +75,32 @@ withdraw.addEventListener('click',()=>{
 
 
 //  add Transaction History funcation
+transHistory.addEventListener('click',()=>{
+    transList.innerHTML = '';
+    if(transactionHistory.length === 0){
+        transList.innerHTML =`<p class="text-center text-gray-500 italic"> No transactions yet`:
+    }else{
+        transactionHistory.forEach((transaction) => {
+            const transactionItem = document.createElement('div');
+            transactionItem.classList.add(
+                'bg-white', 'rounded-lg', 'shadow-md', 'p-4', 'mb-4', 'border-1-4', 'text-sm'
+            );
+
+            if(transaction.action === 'add Money'){
+                transactionItem.classList.add('border-green-500');
+            }else{
+                transactionItem.classList.add('border-red-500');
+            }
+
+            transactionItem.innerHTML = `
+            <div class="font-semibold text-lg"> ${transaction.action}</div>
+            <div class="text-gray-700 mt-1>
+            Amount: Tk ${transaction.amount.toFixed(2)}<br>
+            Balance: Tk${transaction.balance.toFixed(2)}
+            </div>
+            <div class="text-gray-500 mt-2 text-xs">${transaction.timestamp}</div>`;
+            transList.prepend(transactionItem);
+        });
+    }
+});
 
