@@ -29,11 +29,11 @@ addMoney.addEventListener('click',()=>{
         balance.textContent = `Tk: ${currentBlance.toFixed(2)}`;
 
         const transaction = {                // create class for transaction history
-            action: 'add Money',
+            action: 'Add Money',
             amount: amount,
             balance: currentBlance,
             timestamp: new Date().toLocaleString()      // this get date form localhost
-        }
+        };
 
     transactionHistory.push(transaction);
     localStorage.setItem('blance', currentBlance);
@@ -78,15 +78,15 @@ withdraw.addEventListener('click',()=>{
 transHistory.addEventListener('click',()=>{
     transList.innerHTML = '';
     if(transactionHistory.length === 0){
-        transList.innerHTML =`<p class="text-center text-gray-500 italic"> No transactions yet`:
+        transList.innerHTML =`<p class="text-center text-gray-500 italic"> No transactions yet</p>`;
     }else{
         transactionHistory.forEach((transaction) => {
             const transactionItem = document.createElement('div');
             transactionItem.classList.add(
-                'bg-white', 'rounded-lg', 'shadow-md', 'p-4', 'mb-4', 'border-1-4', 'text-sm'
+                'bg-white', 'rounded-lg', 'shadow-md', 'p-4', 'mb-4', 'border-4', 'text-sm'
             );
 
-            if(transaction.action === 'add Money'){
+            if(transaction.action === 'Add Money'){
                 transactionItem.classList.add('border-green-500');
             }else{
                 transactionItem.classList.add('border-red-500');
@@ -94,7 +94,7 @@ transHistory.addEventListener('click',()=>{
 
             transactionItem.innerHTML = `
             <div class="font-semibold text-lg"> ${transaction.action}</div>
-            <div class="text-gray-700 mt-1>
+            <div class="text-gray-700 mt-1">
             Amount: Tk ${transaction.amount.toFixed(2)}<br>
             Balance: Tk${transaction.balance.toFixed(2)}
             </div>
