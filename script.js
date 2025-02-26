@@ -23,7 +23,7 @@ addMoney.addEventListener('click',()=>{
     const amount = parseFloat(amountInput.value); // getting input value and store them in amount
 
     if(isNaN(amount) || amount <= 0){       //this condition check is input is empty or less them 0
-        alert('Please enter a vaild amount');
+        alert('Please enter a valid amount');
     }else{
         currentBlance += amount;
         balance.textContent = `Tk: ${currentBlance.toFixed(2)}`;
@@ -51,7 +51,7 @@ withdraw.addEventListener('click',()=>{
     const amount = parseFloat(amountInput.value);
 
     if(isNaN(amount) || amount <= 0){
-        alert('Please enter a vail amount');
+        alert('Please enter a valid amount');
     }else if(amount > currentBlance){
         alert('Insufficient balance');
     }else{
@@ -59,7 +59,7 @@ withdraw.addEventListener('click',()=>{
         balance.textContent = `Tk ${currentBlance.toFixed(2)}`;
 
         const transaction ={                  // create class for transaction history
-            action: 'withdraw',
+            action: 'Withdraw',
             amount: amount,
             balance: currentBlance,
             timestamp: new Date().toLocaleString()   // this get date form localhost
@@ -96,7 +96,7 @@ transHistory.addEventListener('click',()=>{
             <div class="font-semibold text-lg"> ${transaction.action}</div>
             <div class="text-gray-700 mt-1">
             Amount: Tk ${transaction.amount.toFixed(2)}<br>
-            Balance: Tk${transaction.balance.toFixed(2)}
+            Balance: Tk ${transaction.balance.toFixed(2)}
             </div>
             <div class="text-gray-500 mt-2 text-xs">${transaction.timestamp}</div>`;
             transList.prepend(transactionItem);
@@ -112,6 +112,7 @@ const clearHistoryButton = document.querySelector('#clearHistory');
 
 clearHistoryButton.addEventListener('click',()=>{
     localStorage.removeItem('transactionHistory');
+    transactionHistory = [];
     transList.innerHTML = `<p class="text-center text-gray-500 italic">No transaction yet.</p>`;
 
     localStorage.setItem('blance', 0);
